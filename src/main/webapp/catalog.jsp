@@ -55,11 +55,13 @@
                                 <h5>Ports: <c:out value="${cruise.from_port}"/> - <c:out value="${cruise.to_port}"/></h5>
                             </strong>
                         </h5>
+                        <c:if test = "${sessionScope.user != null}">
                         <h4 class="front-weight-bold blue-text">
-                            <a href="/Cruise_Liner/book.jsp">
+                            <a href="/Cruise_Liner/book">
                             <strong>Book</strong>
                             </a>
                         </h4>
+                        </c:if>
                     </div>
                     </c:forEach>
                 </div>

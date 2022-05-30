@@ -30,11 +30,23 @@
             </c:if>
         </ul>
     </header>
+    <div class="container">
+
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="/Cruise_Liner/profile" class="nav-link" aria-current="page">My profile</a></li>
+            <li class="nav-item"><a href="/Cruise_Liner/requests" class="nav-link">Requests</a></li>
+        </ul>
+    </div>
 </div>
+
 
 <div class="container">
         <div class="form-row">
             <div class="form-group col-md-6">
+                        <h2>Profile</h2>
+                <h5><a href="/Cruise_Liner/editProfile">
+                    Edit
+                </a> </h5>
                 <label><h5>Login:</h5></label>
                 <span>${user.login}</span><br/>
                 <label><h5>Name:</h5></label>
@@ -46,7 +58,10 @@
                 <label><h5>Email:</h5></label>
                 <span>${user.email}</span><br/>
                 <label><h5>Account:</h5></label>
-                <span>${user.account}</span><br/>
+                <span>${user.account}</span>
+                <h5><a href="/Cruise_Liner/topup">
+                    top up
+                </a> </h5>
             </div>
         </div>
 </div>

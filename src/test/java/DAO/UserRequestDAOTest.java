@@ -17,9 +17,9 @@ public class UserRequestDAOTest extends TestCase {
     }
 
     public void testFindUserRequestByCruise(){
-        UserRequestDAO userRequestDAO = new UserRequestDAO();
+        List<UserRequest> userRequest = UserRequestDAO.findUserRequestByCruise("1");
 
-        assertEquals("2", userRequestDAO.findUserRequestByCruise("2").getCruiseName());
+        assertEquals(2, userRequest.size());
     }
 
     public void testGetAllUsersRequest() {
@@ -38,9 +38,9 @@ public class UserRequestDAOTest extends TestCase {
     }
 
     public void testUpdateUserRequest() {
-        UserRequestDAO userRequestDAO = new UserRequestDAO();
-        userRequestDAO.updateUserRequest("immortants", "1", 2, UserRequest.Status.CREATED);
+        UserRequestDAO.updateUserRequest("immortants", "1", 2, UserRequest.Status.CREATED);
+        List<UserRequest> userRequest = UserRequestDAO.findUserRequestByCruise("1");
 
-        assertEquals("1", userRequestDAO.findUserRequestByCruise("1").getCruiseName());
+        assertEquals("1", userRequest.size());
     }
 }

@@ -29,7 +29,7 @@ public class UserDAOTest extends TestCase {
 
     public void testUpdateUser() {
         UserDAO userDAO = new UserDAO();
-        userDAO.updateUser("dol", "Valera", "Alex", "", 1);
+        userDAO.updateUser("dol", "Valera", "Alex", "", "1", 0);
         assertEquals("Valera", userDAO.findUserByLogin("2").getFirstName());
     }
 }

@@ -48,14 +48,15 @@ public class UserRequestDAO {
      * @param cruise UserRequest identifier
      * @return UserRequest entity or null if wasn't found
      */
-    public static UserRequest findUserRequestByCruise(String cruise) {
-        UserRequest userRequest = null;
+    public static List<UserRequest> findUserRequestByCruise(String cruise) {
+        List<UserRequest> userRequest = new ArrayList<>();
         try (Connection con = DBHelper.getInstance().getConnection();
              PreparedStatement pst = con.prepareStatement(SQL_GET_USER_BY_CRUISE)) {
             pst.setString(1, cruise);
             try (ResultSet rs = pst.executeQuery()) {
-                if(rs.next())
-                    userRequest = mapResultSet(rs);
+                while (rs.next()) {
+                    userRequest.add(mapResultSet(rs));
+                }
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

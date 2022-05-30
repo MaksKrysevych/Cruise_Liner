@@ -20,11 +20,11 @@ public class ProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        Object name = session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
 
+        User newUser = UserDAO.findUserByLogin(user.getLogin());
 
-        User user = UserDAO.findUserByLogin(name.toString());
-        request.setAttribute("user", user);
+        request.setAttribute("user", newUser);
         RequestDispatcher  requestDispatcher = getServletContext().getRequestDispatcher("/profile.jsp");
         requestDispatcher.forward(request, response);
     }

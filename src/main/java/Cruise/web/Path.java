@@ -8,4 +8,7 @@ public class Path {
     public static final String LOGOUT_PATH = "/logout";
     public static final String PROFILE_PATH = "/profile";
     public static final String BOOK_PATH = "/book";
+    public static final String TOPUP_PATH = "/topup";
+    public static final String EDIT_PATH = "/edit";
+
 }

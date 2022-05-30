@@ -24,7 +24,7 @@ public class RequestsServlet extends HttpServlet{
         HttpSession session = request.getSession(true);
         Object name = session.getAttribute("user");
 
-        User user = UserDAO.findUserByLogin(name.toString());
+        User user = (User) name;
         if (user.getRole().isUser()){
             List<UserRequest> userRequests = new ArrayList<>();
             UserRequest userRequest = UserRequestDAO.findUserRequestByLogin(user.getLogin());
@@ -41,7 +41,10 @@ public class RequestsServlet extends HttpServlet{
             RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/requests.jsp");
             requestDispatcher.forward(request, response);
         }
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response){
 
     }
 }

@@ -14,8 +14,8 @@ public class UserDAO {
     public static final String SQL_GET_USER_BY_LOGIN = "SELECT * FROM user WHERE login = ?";
     public static final String SQL_GET_ALL_USERS = "SELECT * FROM user";
     public static final String SQL_ADD_USER = "INSERT INTO user(login, password, role, first_name, last_name, phone_number, email, account, notification) VALUES ((?), (?), (?), (?), (?), (?), (?), (?), (?))";
-    public static final String SQL_UPDATE_USER = "UPDATE user SET first_name = (?), last_name = (?), phone_number = (?), notification = (?) WHERE login = (?)";
-
+    public static final String SQL_UPDATE_USER = "UPDATE user SET first_name = (?), last_name = (?), email = (?), phone_number = (?), notification = (?) WHERE login = (?)";
+    public static final String SQL_UPDATE_USER_ACCOUNT = "UPDATE user SET account = (?) WHERE login = (?)";
 
     private static final String LOGIN = "login";
     private static final String PASSWORD = "password";
@@ -93,16 +93,32 @@ public class UserDAO {
     }
 
     /**
-     * Updating liner to DB with given parameters
+     * Updating User to DB with given parameters
      */
-    public static void updateUser(String login, String first_name, String last_name, String phoneNumber, int notification) {
+    public static void updateUser(String login, String first_name, String last_name, String email, String phoneNumber, int notification) {
         try (Connection con = DBHelper.getInstance().getConnection();
              PreparedStatement ps = con.prepareStatement(SQL_UPDATE_USER)) {
             ps.setString(1, first_name);
             ps.setString(2, last_name);
-            ps.setString(3, phoneNumber);
-            ps.setInt(4, notification);
-            ps.setString(5, login);
+            ps.setString(3, email);
+            ps.setString(4, phoneNumber);
+            ps.setInt(5, notification);
+            ps.setString(6, login);
+
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * Updating user's account to DB with given parameters
+     */
+    public static void updateUserAccount(String login, int account) {
+        try (Connection con = DBHelper.getInstance().getConnection();
+             PreparedStatement ps = con.prepareStatement(SQL_UPDATE_USER_ACCOUNT)) {
+            ps.setInt(1, account);
+            ps.setString(2, login);
 
             ps.executeUpdate();
         } catch (SQLException ex) {

@@ -21,6 +21,8 @@ public class CatalogServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+
+
         List<Cruise> cruises = CruiseDAO.getAllCruises();
         request.setAttribute("cruises", cruises);
 
