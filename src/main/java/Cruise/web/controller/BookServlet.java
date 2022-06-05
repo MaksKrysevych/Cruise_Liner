@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,20 +27,25 @@ public class BookServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         String login = request.getParameter("login");
         String cruise = request.getParameter("cruise");
         String people = request.getParameter("people");
+
         HashMap<String, String> viewAttributes = new HashMap<>();
+
         viewAttributes.put("login", login);
 
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
 
-        boolean userRequest = UserRequestDAO.addUserRequest(login, cruise, Date.valueOf("2022-12-02"), Integer.parseInt(people), UserRequest.Status.CREATED);
+        boolean userRequest = UserRequestDAO.addUserRequest(login, cruise, java.sql.Date.valueOf(formatter.format(date)), Integer.parseInt(people), UserRequest.Status.CREATED);
         if (!userRequest){
             viewAttributes.put("error", Constants.OTHER_ERROR);
             passErrorToView(request, response, viewAttributes);
         }
         else {
-            response.sendRedirect(Path.CATALOG_PATH);
+            response.sendRedirect("Cruise_Liner/catalog");
         }
 
     }

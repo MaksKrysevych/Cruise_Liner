@@ -54,7 +54,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="form_password">Password</label>
-                                <input id="form_password" type="text" name="password" class="form-control" placeholder="Please enter your password" required="required" data-error="Password is required.">
+                                <input id="form_password" type="password" name="password" class="form-control" placeholder="Please enter your password" required="required" data-error="Password is required.">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>

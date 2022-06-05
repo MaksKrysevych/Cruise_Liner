@@ -1,9 +1,9 @@
 package Cruise.web.controller;
 
-import Cruise.model.UserDAO;
 import Cruise.model.UserRequestDAO;
 import Cruise.model.entity.User;
 import Cruise.model.entity.UserRequest;
+import Cruise.web.Path;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "RequestsServlet", value = "/requests")
+@WebServlet(name = "RequestsServlet", value = Path.REQUESTS_PATH)
 public class RequestsServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
