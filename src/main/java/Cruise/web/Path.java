@@ -10,6 +10,5 @@ public class Path {
     public static final String BOOK_PATH = "/book";
     public static final String TOPUP_PATH = "/topup";
     public static final String EDIT_PATH = "/edit";
-    public static final String REQUESTS_PATH = "/edit";
 
 }

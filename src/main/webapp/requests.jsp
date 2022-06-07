@@ -60,15 +60,22 @@
 
 <c:forEach items="${userRequests}" var="userRequest">
     <tr>
-        <td><c:out value="${userRequest.login}"/></td>
+        <td><input type="text" readonly required value=<c:out value="${userRequest.login}"/>></td>
         <td><c:out value="${userRequest.cruiseName}"/></td>
         <td><c:out value="${userRequest.countPeople}"/></td>
         <td><c:out value="${userRequest.createTime}"/></td>
         <td><c:out value="${userRequest.status}"/></td>
         <td>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update">
-                Update
-            </button>
+            <form method="post" action="#" id="update">
+                <input type="hidden" name="action" value="updateUserRequest">
+                <input type="hidden"  name="id" value="${userRequest.login}"/>
+                <input type="submit" value="update"/>
+            </form>
+            <form method="post" action="#" id="delete">
+                <input type="hidden" name="delete" value="deleteUserRequest">
+                <input type="hidden"  name="id" value="${userRequest.login}"/>
+                <input type="submit" value="delete"/>
+            </form>
 
         </td>
     </tr>
@@ -76,46 +83,6 @@
 
 
 </table>
-</div>
-
-<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <label>Cruise</label>
-                    <input>
-                    <br/>
-                    <label>People</label>
-                    <input>
-                    <br/>
-                    <label>Status</label>
-                    <input type="text">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Status </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                    </input>
-
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
 </div>
 
 </body>
