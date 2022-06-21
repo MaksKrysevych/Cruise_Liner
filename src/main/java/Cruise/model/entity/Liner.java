@@ -86,21 +86,6 @@ public class Liner {
     public enum Type {
         STANDARD, PREMIUM, LUXURY, EXCLUSIVE;
 
-        public boolean isStandard() {
-            return this == STANDARD;
-        }
-        public boolean isPremium() {
-            return this == PREMIUM;
-        }
-
-        public boolean isLuxury() {
-            return this == LUXURY;
-        }
-
-        public boolean isExclusive() {
-            return this == EXCLUSIVE;
-        }
-
         @Override
         public String toString() {
             return super.toString().toLowerCase();

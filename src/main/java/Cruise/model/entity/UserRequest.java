@@ -6,6 +6,7 @@ import java.util.Date;
 public class UserRequest implements Serializable {
     String login;
     String cruiseName;
+    int price;
     Date createTime;
     int countPeople;
     Status status;
@@ -24,6 +25,14 @@ public class UserRequest implements Serializable {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public int getCountPeople() {
@@ -51,7 +60,7 @@ public class UserRequest implements Serializable {
     }
 
     public enum Status {
-        CREATED, PAID, BOOKED;
+        CREATED, AVAILABLE, PAID, FINISHED;
 
         @Override
         public String toString() {

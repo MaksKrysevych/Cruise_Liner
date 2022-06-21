@@ -1,17 +1,17 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="messages"/>
 <html lang="${language}">
 <head>
-    <title>Requests</title>
+    <title>Cruises</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
 </head>
 <body>
 <div class="container">
@@ -51,7 +51,7 @@
     </div>
 </div>
 <div class="container">
-    <form method="get" action="${Path.REQUESTS_PATH}">
+    <form method="get" action="${Path.CRUISES}">
         <input type="hidden" name="currentPage" value="1">
         <div class="form-group col-md-4">
             <label for="records"><fmt:message key="requests.label.records"/></label>
@@ -61,82 +61,51 @@
                 <option value="10">10</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary"><fmt:message key="cruises.button.submit"/></button>
+        <label> <a href="/Cruise_Liner/createCruise"><fmt:message key="cruises.button.createNew"/></a></label>
     </form>
 <table class="table table-bordered">
-
     <tr>
-        <th scope="col"><fmt:message key="requests.label.login"/></th>
-        <th scope="col"><fmt:message key="requests.label.cruise"/></th>
-        <th scope="col"><fmt:message key="requests.label.price"/></th>
-        <th scope="col"><fmt:message key="requests.label.people"/></th>
-        <th scope="col"><fmt:message key="requests.label.date"/></th>
-        <th scope="col"><fmt:message key="requests.label.status"/></th>
-        <th scope="col"><fmt:message key="requests.label.actions"/></th>
-
+        <th scope="col"><fmt:message key="cruises.label.name"/></th>
+        <th scope="col"><fmt:message key="cruises.label.regions"/></th>
+        <th scope="col"><fmt:message key="cruises.label.liner"/></th>
+        <th scope="col"><fmt:message key="cruises.label.startDay"/></th>
+        <th scope="col"><fmt:message key="cruises.label.finishDay"/></th>
+        <th scope="col"><fmt:message key="cruises.label.fromPort"/></th>
+        <th scope="col"><fmt:message key="cruises.label.toPort"/></th>
+        <th scope="col"><fmt:message key="cruises.label.days"/></th>
+        <th scope="col"><fmt:message key="cruises.label.description"/></th>
+        <th scope="col"><fmt:message key="cruises.label.actions"/></th>
     </tr>
-
-<c:forEach items="${userRequests}" var="userRequest">
+<c:forEach items="${cruises}" var="cruise">
     <tr>
-        <td><c:out value="${userRequest.login}"/></td>
-        <td><c:out value="${userRequest.cruiseName}"/></td>
-        <td><c:out value="${userRequest.price}"/></td>
-        <td><c:out value="${userRequest.countPeople}"/></td>
-        <td><c:out value="${userRequest.createTime}"/></td>
-        <c:if test="${user.role == 'ADMIN'}">
+        <td><c:out value="${cruise.name}"/></td>
+        <td><c:out value="${cruise.regions}"/></td>
+        <td><c:out value="${cruise.liner}"/></td>
+        <td><c:out value="${cruise.start_day}"/></td>
+        <td><c:out value="${cruise.finish_day}"/></td>
+        <td><c:out value="${cruise.from_port}"/></td>
+        <td><c:out value="${cruise.to_port}"/></td>
+        <td><c:out value="${cruise.days}"/></td>
+        <td><c:out value="${cruise.description}"/></td>
         <td>
-            <form method="post" action="/Cruise_Liner/updateRequest">
-                <select name="status" onchange="submit()">
-                    <option>${userRequest.status}</option>
-                    <option><fmt:message key="requests.button.created"/></option>
-                    <option><fmt:message key="requests.button.available"/></option>
-                    <option><fmt:message key="requests.button.paid"/></option>
-                    <option><fmt:message key="requests.button.finished"/></option>
-                </select>
-                <input type="hidden"  name="login" value="${userRequest.login}"/>
-                <input type="hidden"  name="cruise" value="${userRequest.cruiseName}"/>
-                <input type="hidden"  name="people" value="${userRequest.countPeople}"/>
-            </form>
-        </td>
-        </c:if>
-        <c:if test="${user.role == 'USER'}">
-            <td><c:out value="${userRequest.status}"/></td>
-        </c:if>
-        <td>
-                <c:if test="${user.role == 'USER'}">
-                <c:if test="${userRequest.status == 'AVAILABLE'}">
-                    <form action = "#" method = "post" enctype = "multipart/form-data">
-                        <input type = "file" name = "file" size = "50" />
-                        <br/>
-                        <input type = "submit" value = "<fmt:message key="requests.button.upload"/>" />
-                    </form>
-                    <form method="post" action="/Cruise_Liner/pay" id="pay">
-                        <input type="hidden" name="pay" value="payRequest">
-                        <input type="hidden"  name="login" value="${userRequest.login}"/>
-                        <input type="hidden"  name="cruise" value="${userRequest.cruiseName}"/>
-                        <input type="hidden"  name="price" value="${userRequest.price}"/>
-                        <input type="hidden"  name="people" value="${userRequest.countPeople}"/>
-                        <input type="submit" value="pay"/>
-                    </form>
-                </c:if>
-            </c:if>
-
-            <form method="post" action="/Cruise_Liner/deleteRequest" id="delete">
-                <input type="hidden" name="delete" value="deleteUserRequest">
-                <input type="hidden"  name="login" value="${userRequest.login}"/>
-                <input type="hidden"  name="cruise" value="${userRequest.cruiseName}"/>
+            <a href="/Cruise_Liner/updateCruise?cruise=${cruise.name}">
+                <strong><fmt:message key="cruises.button.update"/></strong>
+            </a>
+            <form method="post" action="/Cruise_Liner/deleteCruise" id="delete">
+                <input type="hidden" name="delete" value="deleteCruise">
+                <input type="hidden"  name="cruise" value="${cruise.name}"/>
                 <input type="submit" value="<fmt:message key="requests.button.delete"/>"/>
             </form>
         </td>
     </tr>
 </c:forEach>
-
 </table>
     <nav aria-label="Navigation for requests">
         <ul class="pagination">
             <c:if test="${currentPage != 1}">
                 <li class="page-item">
-                    <a class="page-link"href="requests?recordsPerPage=${recordsPerPage}&currentPage=${currentPage-1}"><fmt:message key="catalog.button.previous"/></a>
+                    <a class="page-link"href="cruises?recordsPerPage=${recordsPerPage}&currentPage=${currentPage-1}"><fmt:message key="catalog.button.previous"/></a>
                 </li>
             </c:if>
 
@@ -149,7 +118,7 @@
                     </c:when>
                     <c:otherwise>
                         <li class="page-item">
-                            <a class="page-link"href="requests?recordsPerPage=${recordsPerPage}&currentPage=${i}">${i}</a>
+                            <a class="page-link"href="cruises?recordsPerPage=${recordsPerPage}&currentPage=${i}">${i}</a>
                         </li>
                     </c:otherwise>
                 </c:choose>
@@ -157,7 +126,7 @@
 
             <c:if test="${currentPage lt noOfPages}">
                 <li class="page-item">
-                    <a class="page-link"href="requests?recordsPerPage=${recordsPerPage}&currentPage=${currentPage+1}"><fmt:message key="catalog.button.next"/></a>
+                    <a class="page-link"href="cruises?recordsPerPage=${recordsPerPage}&currentPage=${currentPage+1}"><fmt:message key="catalog.button.next"/></a>
                 </li>
             </c:if>
         </ul>

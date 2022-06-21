@@ -38,7 +38,7 @@ public class LinerDAOTest extends TestCase {
     @Test
     public void testUpdateLiner(){
         LinerDAO linerDAO = new LinerDAO();
-        linerDAO.updateLiner("1", "standard",100,100,100,100);
+        linerDAO.updateLiner("1", "2022", 200, 350, "standard",100,100,100,100, "1");
 
         assertEquals("1", linerDAO.findLinerByName("1").getName());
     }

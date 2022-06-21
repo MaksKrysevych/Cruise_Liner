@@ -9,6 +9,12 @@ public class Path {
     public static final String PROFILE_PATH = "/profile";
     public static final String BOOK_PATH = "/book";
     public static final String TOPUP_PATH = "/topup";
-    public static final String EDIT_PATH = "/edit";
+    public static final String EDIT_PROFILE_PATH = "/editProfile";
+    public static final String REQUESTS_PATH = "/requests";
+    public static final String UPDATE_USER_REQUEST = "/updateRequest";
+    public static final String CRUISES = "/cruises";
+    public static final String CREATE_CRUISE = "/createCruise";
+    public static final String LINERS = "/liners";
+    public static final String CREATE_LINER = "/createLiner";
 
 }

@@ -34,6 +34,13 @@ public class CruiseDAOTest extends TestCase {
         assertEquals(1, list.size());
     }
 
+    public void testGetSomeCruises() {
+        CruiseDAO cruiseDAO = new CruiseDAO();
+        List list = new ArrayList<>();
+        list = cruiseDAO.getSomeCruises(1, 2);
+        assertEquals(2, list.size());
+    }
+
     public void testAddCruise() {
         CruiseDAO cruiseDAO = new CruiseDAO();
 
@@ -42,7 +49,7 @@ public class CruiseDAOTest extends TestCase {
 
     public void testUpdateCruise() {
         CruiseDAO cruiseDAO = new CruiseDAO();
-        cruiseDAO.updateCruise("2","3", "Neptune", Date.valueOf("2022-12-02"), Date.valueOf("2022-12-15"), "1", "3", 13, "2deretythbg");
-        assertEquals("2deretythbg", cruiseDAO.findCruiseByName("2").getDescription());
+        cruiseDAO.updateCruise("neew","3", "Neptune", Date.valueOf("2022-12-02"), Date.valueOf("2022-12-15"), "1", "3", 13, "2deretythbg", "3");
+        assertEquals("2deretythbg", cruiseDAO.findCruiseByName("neew").getDescription());
     }
 }

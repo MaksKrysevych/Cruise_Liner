@@ -1,4 +1,4 @@
-package Cruise.web.controller;
+package Cruise.web.controller.site;
 
 import Cruise.Constants;
 import Cruise.model.UserDAO;

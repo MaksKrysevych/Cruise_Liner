@@ -1,5 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="messages"/>
+<html lang="${language}">
 <head>
     <title>Ukrainian Cruise</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -28,17 +32,23 @@
             <h5>|Cruise|</h5>
 
             <ul class="nav nav-pills">
-                <li class="nav-item"><a href="/Cruise_Liner" class="nav-link active" aria-current="page">Home</a></li>
-                <li class="nav-item"><a href="/Cruise_Liner/contacts.jsp" class="nav-link">Contacts</a></li>
-                <li class="nav-item"><a href="/Cruise_Liner/catalog" class="nav-link">Catalog</a></li>
+                <li class="nav-item"><a href="/Cruise_Liner" class="nav-link active" aria-current="page"><fmt:message key="main.button.home"/></a></li>
+                <li class="nav-item"><a href="/Cruise_Liner/contacts.jsp" class="nav-link"><fmt:message key="main.button.contacts"/></a></li>
+                <li class="nav-item"><a href="/Cruise_Liner/catalog" class="nav-link"><fmt:message key="main.button.catalog"/></a></li>
                 <c:if test = "${sessionScope.user != null}">
-                    <li class="nav-item"><a href="/Cruise_Liner/profile" class="nav-link">Profile</a></li>
-                    <li class="nav-item"><a href="/Cruise_Liner/logout" class="nav-link">Logout</a></li>
+                    <li class="nav-item"><a href="/Cruise_Liner/profile" class="nav-link"><fmt:message key="main.button.profile"/></a></li>
+                    <li class="nav-item"><a href="/Cruise_Liner/logout" class="nav-link"><fmt:message key="main.button.logout"/></a></li>
                 </c:if>
                 <c:if test = "${sessionScope.user == null}">
-                    <li class="nav-item"><a href="/Cruise_Liner/login" class="nav-link">Login</a></li>
-                    <li class="nav-item"><a href="/Cruise_Liner/signup" class="nav-link">Sign-Up</a></li>
+                    <li class="nav-item"><a href="/Cruise_Liner/login" class="nav-link"><fmt:message key="main.button.login"/></a></li>
+                    <li class="nav-item"><a href="/Cruise_Liner/signup" class="nav-link"><fmt:message key="main.button.signup"/></a></li>
                 </c:if>
+                <form>
+                    <select id="language" name="language" onchange="submit()">
+                        <option value="eu" ${language == '' ? 'selected' : ''}><fmt:message key="language.label.english"/></option>
+                        <option value="ua" ${language == 'ua' ? 'selected' : ''}><fmt:message key="language.label.ukrainian"/></option>
+                    </select>
+                </form>
 
             </ul>
         </div>
@@ -47,22 +57,22 @@
 
 <img src="https://life.pravda.com.ua/images/doc/4/9/49b1b70-kruize-2.jpg" class="image" alt="https://life.pravda.com.ua/images/doc/4/9/49b1b70-kruize-2.jpg">
 <div class="container">
-<h2 class="text-center">Welcome to Ukrainian Cruise!</h2>
+<h2 class="text-center"><fmt:message key="main.text.description1"/></h2>
 <div class="row text-center">
-    <h4>It is our new cruise!</h4>
+    <h4><fmt:message key="main.text.description2"/></h4>
 </div>
     <div class="row">
-    <h5>We suggest:</h5>
+    <h5><fmt:message key="main.text.description3"/></h5>
     </div>
-    <h6>*unique routes</h6>
-    <h6>*our local cuisine</h6>
-    <h6>*pleasant staff</h6>
-    <h6>*interesting events</h6>
+    <h6><fmt:message key="main.text.description4"/></h6>
+    <h6><fmt:message key="main.text.description5"/></h6>
+    <h6><fmt:message key="main.text.description6"/></h6>
+    <h6><fmt:message key="main.text.description7"/></h6>
     <div class="row">
-        <h5>And lots of another things, that we can suggest you!</h5>
+        <h5><fmt:message key="main.text.description8"/></h5>
     </div>
     <div class="row">
-        <h5>Don't waste your time! Sign up and book suitable for you cruise!</h5>
+        <h5><fmt:message key="main.text.description9"/></h5>
     </div>
 
 

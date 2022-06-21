@@ -1,13 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Home
-  Date: 30.05.2022
-  Time: 11:24
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="messages"/>
+<html lang="${language}">
 <head>
     <title>Edit</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -23,24 +20,29 @@
             <h5>|Cruise|</h5>
         </div>
         <ul class="nav nav-pills">
-            <li class="nav-item"><a href="/Cruise_Liner" class="nav-link" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="/Cruise_Liner/contacts.jsp" class="nav-link">Contacts</a></li>
-            <li class="nav-item"><a href="/Cruise_Liner/catalog" class="nav-link">Catalog</a></li>
+            <li class="nav-item"><a href="/Cruise_Liner" class="nav-link" aria-current="page"><fmt:message key="main.button.home"/></a></li>
+            <li class="nav-item"><a href="/Cruise_Liner/contacts.jsp" class="nav-link"><fmt:message key="main.button.contacts"/></a></li>
+            <li class="nav-item"><a href="/Cruise_Liner/catalog" class="nav-link"><fmt:message key="main.button.catalog"/></a></li>
             <c:if test = "${sessionScope.user != null}">
-                <li class="nav-item"><a href="/Cruise_Liner/profile" class="nav-link active">Profile</a></li>
-                <li class="nav-item"><a href="/Cruise_Liner/logout" class="nav-link">Logout</a></li>
+                <li class="nav-item"><a href="/Cruise_Liner/profile" class="nav-link active"><fmt:message key="main.button.profile"/></a></li>
+                <li class="nav-item"><a href="/Cruise_Liner/logout" class="nav-link"><fmt:message key="main.button.logout"/></a></li>
             </c:if>
             <c:if test = "${sessionScope.user == null}">
-                <li class="nav-item"><a href="/Cruise_Liner/login" class="nav-link">Login</a></li>
-                <li class="nav-item"><a href="/Cruise_Liner/signup" class="nav-link">Sign-Up</a></li>
+                <li class="nav-item"><a href="/Cruise_Liner/login" class="nav-link"><fmt:message key="main.button.login"/></a></li>
+                <li class="nav-item"><a href="/Cruise_Liner/signup" class="nav-link"><fmt:message key="main.button.signup"/></a></li>
             </c:if>
+            <form>
+                <select id="language" name="language" onchange="submit()">
+                    <option value="eu" ${language == '' ? 'selected' : ''}><fmt:message key="language.label.english"/></option>
+                    <option value="ua" ${language == 'ua' ? 'selected' : ''}><fmt:message key="language.label.ukrainian"/></option>
+                </select>
+            </form>
         </ul>
     </header>
     <div class="container">
-
         <ul class="nav nav-pills">
-            <li class="nav-item"><a href="/Cruise_Liner/profile" class="nav-link" aria-current="page">My profile</a></li>
-            <li class="nav-item"><a href="/Cruise_Liner/requests" class="nav-link">Requests</a></li>
+            <li class="nav-item"><a href="/Cruise_Liner/profile" class="nav-link" aria-current="page"><fmt:message key="profile.button.myProfile"/></a></li>
+            <li class="nav-item"><a href="/Cruise_Liner/requests" class="nav-link"><fmt:message key="profile.button.requests"/></a></li>
         </ul>
     </div>
 </div>
@@ -48,22 +50,22 @@
 <div class="container d-flex ">
     <form method="post" action="${Path.EDIT}">
         <div class="form-floating">
-            <label>First name</label>
+            <label><fmt:message key="edit.label.firstname"/></label>
             <input type="text" class="form-control" id="firstname" name="firstname" required value="${user.firstName}" default="" />
         </div>
         <div class="form-floating">
-            <label>Last name</label>
+            <label><fmt:message key="edit.label.lastname"/></label>
             <input type="text" class="form-control" id="lastname" name="lastname" required value="${user.lastName}" default="" />
         </div>
         <div class="form-floating">
-            <label>Email</label>
+            <label><fmt:message key="edit.label.email"/></label>
             <input type="text" class="form-control" id="email" name="email" required value="${user.email}" default="" />
         </div>
         <div class="form-floating">
-            <label>Phone</label>
+            <label><fmt:message key="edit.label.phone"/></label>
             <input type="text" class="form-control" id="phone" name="phone"  default="" />
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit" > Submit</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" > <fmt:message key="edit.button.submit"/></button>
     </form>
 </div>
 </body>

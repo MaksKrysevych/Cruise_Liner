@@ -14,8 +14,10 @@ public class LinerDAO {
 
     public static final String SQL_GET_LINER_BY_NAME = "SELECT * FROM liner WHERE name = ?";
     public static final String SQL_GET_ALL_LINERS = "SELECT * FROM liner";
+    public static final String SQL_GET_SOME_LINERS = "SELECT * FROM liner LIMIT ?, ?";
     public static final String SQL_ADD_LINER = "INSERT INTO liner(name ,built, room_count, max_people, class, room_inner, room_with_window, room_with_balcony, room_luxury) VALUES ((?), (?), (?), (?), (?), (?), (?), (?), (?))";
-    private static final String SQL_UPDATE_LINER = "UPDATE liner SET class = (?), room_inner = (?), room_with_window = (?), room_with_balcony = (?), room_luxury = (?) WHERE name = (?)";
+    private static final String SQL_UPDATE_LINER = "UPDATE liner SET name = (?), built = (?), room_count = (?), max_people = (?), class = (?), room_inner = (?), room_with_window = (?), room_with_balcony = (?), room_luxury = (?) WHERE name = (?)";
+    private static final String SQL_DELETE_LINER = "DELETE FROM liner WHERE name = ?";
 
     public static final String NAME = "name";
     public static final String BUILT = "built";
@@ -67,6 +69,31 @@ public class LinerDAO {
     }
 
     /**
+     * Returns list of some liners
+     *
+     * @return List of Liner entities. If any present returns empty list.
+     */
+    public static List<Liner> getSomeLiners(int currentPage, int recordsPerPage) {
+        List<Liner> liners = new ArrayList<>();
+
+        int start = currentPage * recordsPerPage - recordsPerPage;
+
+        try (Connection con = DBHelper.getInstance().getConnection();
+             PreparedStatement pst = con.prepareStatement(SQL_GET_SOME_LINERS)) {
+            pst.setInt(1, start);
+            pst.setInt(2, recordsPerPage);
+            try(ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    liners.add(mapResultSet(rs));
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return liners;
+    }
+
+    /**
      * Adding liner to DB with given parameters
      * @return true if User was successfully added, false otherwise
      */
@@ -95,20 +122,41 @@ public class LinerDAO {
     /**
      * Updating liner to DB with given parameters
      */
-    public static void updateLiner(String name, String type, int roomInner, int roomWithWindow, int roomWithBalcony, int roomLuxury) {
+    public static boolean updateLiner(String newName, String built, int roomCount, int maxPeople, String type, int roomInner, int roomWithWindow, int roomWithBalcony, int roomLuxury, String name) {
+        boolean result = false;
         try (Connection con = DBHelper.getInstance().getConnection();
              PreparedStatement ps = con.prepareStatement(SQL_UPDATE_LINER)) {
-            ps.setString(1, type);
-            ps.setInt(2, roomInner);
-            ps.setInt(3, roomWithWindow);
-            ps.setInt(4, roomWithBalcony);
-            ps.setInt(5, roomLuxury);
-            ps.setString(6, name);
+            ps.setString(1, newName);
+            ps.setString(2, built);
+            ps.setInt(3, roomCount);
+            ps.setInt(4, maxPeople);
+            ps.setString(5, type);
+            ps.setInt(6, roomInner);
+            ps.setInt(7, roomWithWindow);
+            ps.setInt(8, roomWithBalcony);
+            ps.setInt(9, roomLuxury);
+            ps.setString(10, name);
 
-            ps.executeUpdate();
+            result = ps.executeUpdate() > 1;
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        return result;
+    }
+
+    /**
+     * Delete liner from DB with given parameters
+     */
+    public static boolean deleteLiner(String liner) {
+        boolean result = false;
+        try (Connection con = DBHelper.getInstance().getConnection();
+             PreparedStatement pst = con.prepareStatement(SQL_DELETE_LINER)) {
+            pst.setString(1, liner);
+            result = pst.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return result;
     }
 
     /**

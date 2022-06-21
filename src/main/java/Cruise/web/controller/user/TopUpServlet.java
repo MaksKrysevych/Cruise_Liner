@@ -1,4 +1,4 @@
-package Cruise.web.controller;
+package Cruise.web.controller.user;
 
 import Cruise.model.UserDAO;
 import Cruise.model.entity.User;
@@ -25,7 +25,14 @@ public class TopUpServlet extends HttpServlet {
 
         User newUser = UserDAO.findUserByLogin(user.getLogin());
 
-        int account = Integer.parseInt(req.getParameter("account"));
+        int account;
+
+        if (req.getParameter("account") == null){
+            account = 0;
+        }
+        else {
+            account = Integer.parseInt(req.getParameter("account"));
+        }
 
         account = account + newUser.getAccount();
         UserDAO.updateUserAccount(user.getLogin(), account);

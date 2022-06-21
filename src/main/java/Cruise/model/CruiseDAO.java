@@ -14,12 +14,15 @@ import java.util.List;
 public class CruiseDAO {
     public static final String SQL_GET_CRUISE_BY_DAYS = "SELECT * FROM cruise WHERE days = ?";
     public static final String SQL_GET_CRUISE_BY_NAME = "SELECT * FROM cruise WHERE name = ?";
-    public static final String SQL_GET_CRUISE_BY_DATE = "SELECT * FROM cruise WHERE start_day = (?) && finish_day = (?)";
+    public static final String SQL_GET_CRUISE_BY_DATE = "SELECT * FROM cruise WHERE start_day = (?) , finish_day = (?)";
+    public static final String SQL_GET_SOME_CRUISE = "SELECT * FROM cruise LIMIT ?, ?";
+    public static final String SQL_GET_SOME_CRUISE_BY_DAYS = "SELECT * FROM cruise ORDER BY days LIMIT ?, ?";
+    public static final String SQL_GET_SOME_CRUISE_BY_DATE = "SELECT * FROM cruise ORDER BY start_day LIMIT ?, ?";
     public static final String SQL_GET_ALL_CRUISES = "SELECT * FROM cruise";
     public static final String SQL_ADD_CRUISE = "INSERT INTO cruise(name, regions, liner, start_day, finish_day, from_port, to_port, days, description) VALUES ((?), (?), (?), (?), (?), (?), (?), (?), (?))";
     public static final String SQL_UPDATE_CRUISE = "UPDATE cruise SET name = (?), regions = (?), liner = (?), start_day = (?), finish_day = (?), from_port = (?), to_port = (?), days = (?), description = (?) WHERE name = (?)";
+    private static final String SQL_DELETE_CRUISE = "DELETE FROM cruise WHERE name = ?";
 
-    private static final String CRUISE_ID = "cruise_id";
     private static final String NAME = "name";
     private static final String REGIONS = "regions";
     private static final String LINER = "liner";
@@ -90,6 +93,81 @@ public class CruiseDAO {
     }
 
     /**
+     * Returns list of some cruises
+     *
+     * @return List of Cruise entities. If any present returns empty list.
+     */
+    public static List<Cruise> getSomeCruises(int currentPage, int recordsPerPage) {
+        List<Cruise> cruises = new ArrayList<>();
+
+        int start = currentPage * recordsPerPage - recordsPerPage;
+
+        try (Connection con = DBHelper.getInstance().getConnection();
+             PreparedStatement pst = con.prepareStatement(SQL_GET_SOME_CRUISE)) {
+            pst.setInt(1, start);
+            pst.setInt(2, recordsPerPage);
+            try(ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    cruises.add(mapResultSet(rs));
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return cruises;
+    }
+
+    /**
+     * Returns list of some cruises
+     *
+     * @return List of Cruise entities. If any present returns empty list.
+     */
+    public static List<Cruise> getSomeCruisesByDate(int currentPage, int recordsPerPage) {
+        List<Cruise> cruises = new ArrayList<>();
+
+        int start = currentPage * recordsPerPage - recordsPerPage;
+
+        try (Connection con = DBHelper.getInstance().getConnection();
+             PreparedStatement pst = con.prepareStatement(SQL_GET_SOME_CRUISE_BY_DATE)) {
+            pst.setInt(1, start);
+            pst.setInt(2, recordsPerPage);
+            try(ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    cruises.add(mapResultSet(rs));
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return cruises;
+    }
+
+    /**
+     * Returns list of some cruises
+     *
+     * @return List of Cruise entities. If any present returns empty list.
+     */
+    public static List<Cruise> getSomeCruisesByDays(int currentPage, int recordsPerPage) {
+        List<Cruise> cruises = new ArrayList<>();
+
+        int start = currentPage * recordsPerPage - recordsPerPage;
+
+        try (Connection con = DBHelper.getInstance().getConnection();
+             PreparedStatement pst = con.prepareStatement(SQL_GET_SOME_CRUISE_BY_DAYS)) {
+            pst.setInt(1, start);
+            pst.setInt(2, recordsPerPage);
+            try(ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    cruises.add(mapResultSet(rs));
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return cruises;
+    }
+
+    /**
      * Returns list of all users
      *
      * @return List of Cruise entities. If any present returns empty list.
@@ -135,11 +213,15 @@ public class CruiseDAO {
         return result;
     }
 
-    public static void updateCruise(String name, String regions, String liner, Date startDay, Date finishDay,
-                                    String fromPort, String toPort, int days, String description){
+    /**
+     * Updating cruise to DB with given parameters
+     */
+    public static boolean updateCruise(String newName, String regions, String liner, Date startDay, Date finishDay,
+                                    String fromPort, String toPort, int days, String description, String name){
+        boolean result = false;
         try (Connection con = DBHelper.getInstance().getConnection();
              PreparedStatement ps = con.prepareStatement(SQL_UPDATE_CRUISE)) {
-            ps.setString(1, name);
+            ps.setString(1, newName);
             ps.setString(2, regions);
             ps.setString(3, liner);
             ps.setDate(4, startDay);
@@ -150,12 +232,26 @@ public class CruiseDAO {
             ps.setString(9, description);
             ps.setString(10, name);
 
-
-
-            ps.executeUpdate();
+            result = ps.executeUpdate() > 1;
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        return result;
+    }
+
+    /**
+     * Delete cruise from DB with given parameters
+     */
+    public static boolean deleteCruise(String cruise) {
+        boolean result = false;
+        try (Connection con = DBHelper.getInstance().getConnection();
+             PreparedStatement pst = con.prepareStatement(SQL_DELETE_CRUISE)) {
+            pst.setString(1, cruise);
+            result = pst.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return result;
     }
 
     /**

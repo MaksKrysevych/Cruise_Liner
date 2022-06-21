@@ -1,7 +1,8 @@
-package Cruise.web.controller;
+package Cruise.web.controller.user;
 
 import Cruise.model.UserDAO;
 import Cruise.model.entity.User;
+import Cruise.web.Path;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Statement;
 
-@WebServlet(name = "EditProfileServlet", value = "/editProfile")
+@WebServlet(name = "EditProfileServlet", value = Path.EDIT_PROFILE_PATH)
 public class EditProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -20,7 +21,6 @@ public class EditProfileServlet extends HttpServlet {
         User user = (User) session.getAttribute("user");
         req.setAttribute("user", user);
         req.getRequestDispatcher("/editProfile.jsp").forward(req, resp);
-
     }
 
     @Override
