@@ -49,11 +49,13 @@
             <h5><fmt:message key="details.label.ports"/>: <c:out value="${cruise.from_port}"/> - <c:out value="${cruise.to_port}"/></h5>
             <h5><fmt:message key="details.label.description"/>: <c:out value="${cruise.description}"/></h5>
             <c:if test = "${sessionScope.user != null}">
-                <h4 class="front-weight-bold blue-text">
-                    <a href="/Cruise_Liner/book?cruise=${cruise.name}">
-                        <strong><fmt:message key="catalog.button.book"/></strong>
-                    </a>
-                </h4>
+                <c:if test="${user.role == 'USER'}">
+                    <h4 class="front-weight-bold blue-text">
+                        <a href="/Cruise_Liner/book?cruise=${cruise.name}">
+                            <strong><fmt:message key="catalog.button.book"/></strong>
+                        </a>
+                    </h4>
+                </c:if>
             </c:if>
             <c:if test = "${sessionScope.user == null}">
                 <h4 class="front-weight-bold blue-text">

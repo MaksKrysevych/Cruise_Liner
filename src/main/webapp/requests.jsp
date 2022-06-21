@@ -87,11 +87,30 @@
         <td>
             <form method="post" action="/Cruise_Liner/updateRequest">
                 <select name="status" onchange="submit()">
-                    <option>${userRequest.status}</option>
-                    <option><fmt:message key="requests.button.created"/></option>
-                    <option><fmt:message key="requests.button.available"/></option>
-                    <option><fmt:message key="requests.button.paid"/></option>
-                    <option><fmt:message key="requests.button.finished"/></option>
+                    <c:if test="${userRequest.status == 'CREATED'}">
+                        <option hidden><fmt:message key="requests.button.created"/></option>
+                        <option><fmt:message key="requests.button.available"/></option>
+                        <option><fmt:message key="requests.button.paid"/></option>
+                        <option><fmt:message key="requests.button.finished"/></option>
+                    </c:if>
+                    <c:if test="${userRequest.status == 'AVAILABLE'}">
+                        <option hidden><fmt:message key="requests.button.available"/></option>
+                        <option><fmt:message key="requests.button.created"/></option>
+                        <option><fmt:message key="requests.button.paid"/></option>
+                        <option><fmt:message key="requests.button.finished"/></option>
+                    </c:if>
+                    <c:if test="${userRequest.status == 'PAID'}">
+                        <option hidden><fmt:message key="requests.button.paid"/></option>
+                        <option><fmt:message key="requests.button.created"/></option>
+                        <option><fmt:message key="requests.button.available"/></option>
+                        <option><fmt:message key="requests.button.finished"/></option>
+                    </c:if>
+                    <c:if test="${userRequest.status == 'FINISHED'}">
+                        <option hidden><fmt:message key="requests.button.finished"/></option>
+                        <option><fmt:message key="requests.button.paid"/></option>
+                        <option><fmt:message key="requests.button.created"/></option>
+                        <option><fmt:message key="requests.button.available"/></option>
+                    </c:if>
                 </select>
                 <input type="hidden"  name="login" value="${userRequest.login}"/>
                 <input type="hidden"  name="cruise" value="${userRequest.cruiseName}"/>
