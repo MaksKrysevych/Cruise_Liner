@@ -39,7 +39,7 @@ public class CruiseDAOTest extends TestCase {
     @Test
     public void testUpdateCruise() {
         CruiseDAO cruiseDAO = new CruiseDAO();
-        cruiseDAO.updateCruise("neew","3", "Neptune", Date.valueOf("2022-12-02"), Date.valueOf("2022-12-15"), "1", "3", 13, "2deretythbg", "3");
+        cruiseDAO.updateCruise("neew","3", "Neptune", Date.valueOf("2022-12-02"), Date.valueOf("2022-12-15"), "1", "3", 13, "2deretythbg", "2");
         assertEquals("2deretythbg", cruiseDAO.findCruiseByName("neew").getDescription());
     }
 }

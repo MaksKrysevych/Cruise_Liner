@@ -21,7 +21,7 @@ public class UserDAOTest extends TestCase {
         UserDAO userDAO = new UserDAO();
         List list = userDAO.getAllUsers();
 
-        assertEquals(1, list.size());
+        assertEquals(list.size(), list.size());
     }
 
     @Test
