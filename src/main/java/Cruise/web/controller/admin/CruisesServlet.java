@@ -32,7 +32,7 @@ public class CruisesServlet extends HttpServlet {
         int rows = UserRequestDAO.getAllUsersRequest().size();
         int numberOfPages = rows / recordsPerPage;
 
-        if (numberOfPages % recordsPerPage > 0) {
+        if (rows % recordsPerPage > 0) {
             numberOfPages++;
         }
 

@@ -66,13 +66,13 @@
 <table class="table table-bordered">
 
     <tr>
-        <th scope="col"><fmt:message key="requests.label.login"/></th>
-        <th scope="col"><fmt:message key="requests.label.cruise"/></th>
-        <th scope="col"><fmt:message key="requests.label.price"/></th>
-        <th scope="col"><fmt:message key="requests.label.people"/></th>
-        <th scope="col"><fmt:message key="requests.label.date"/></th>
-        <th scope="col"><fmt:message key="requests.label.status"/></th>
-        <th scope="col"><fmt:message key="requests.label.actions"/></th>
+            <th scope="col"><fmt:message key="requests.label.login"/></th>
+            <th scope="col"><fmt:message key="requests.label.cruise"/></th>
+            <th scope="col"><fmt:message key="requests.label.price"/></th>
+            <th scope="col"><fmt:message key="requests.label.people"/></th>
+            <th scope="col"><fmt:message key="requests.label.date"/></th>
+            <th scope="col"><fmt:message key="requests.label.status"/></th>
+            <th scope="col"><fmt:message key="requests.label.actions"/></th>
 
     </tr>
 

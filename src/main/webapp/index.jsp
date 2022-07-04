@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="WEB-INF/mytags.tld" prefix="m" %>
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="messages"/>
@@ -29,7 +30,7 @@
 <div class="container-fluid">
     <header class="d-flex justify-content-center py-3">
         <div class="navbar navbar-header">
-            <h5>|Cruise|</h5>
+            <h5><m:today/></h5>
 
             <ul class="nav nav-pills">
                 <li class="nav-item"><a href="/Cruise_Liner" class="nav-link active" aria-current="page"><fmt:message key="main.button.home"/></a></li>

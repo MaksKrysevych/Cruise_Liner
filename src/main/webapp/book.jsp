@@ -60,12 +60,12 @@
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
-                            <label>Room </label>
+                            <label><fmt:message key="book.label.room"/> </label>
                             <select name="room">
-                                <option>inner</option>
-                                <option>with window</option>
-                                <option>with balcony</option>
-                                <option>luxury</option>
+                                <option><fmt:message key="book.label.room.inner"/></option>
+                                <option><fmt:message key="book.label.room.withWindow"/></option>
+                                <option><fmt:message key="book.label.room.withBalcony"/></option>
+                                <option><fmt:message key="book.label.room.luxury"/></option>
                             </select>
                         </div>
                 <c:choose>

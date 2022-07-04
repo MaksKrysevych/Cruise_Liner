@@ -1494,3 +1494,171 @@ Caused by: java.net.SocketException: Программа на вашем хост
 2022-06-20 14:40:44 INFO  HikariDataSource:386 - HikariPool-1 - Starting...
 2022-06-20 14:40:45 INFO  HikariPool:393 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@18f8cd79
 2022-06-20 14:40:45 INFO  HikariDataSource:386 - HikariPool-1 - Start completed.
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - Driver class com.mysql.cj.jdbc.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@6f94fa3e
+2022-07-04 13:53:47 DEBUG HikariConfig:386 - HikariPool-1 - configuration:
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - allowPoolSuspension.............false
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - autoCommit......................true
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - catalog.........................none
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - connectionInitSql...............none
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - connectionTestQuery.............none
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - connectionTimeout...............30000
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - dataSource......................none
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - dataSourceClassName.............none
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - dataSourceJNDI..................none
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - dataSourceProperties............{maintainTimeStats=false, password=<masked>, prepStmtCacheSqlLimit=2048, rewriteBatchedStatements=true, elideSetAutoCommits=true, cachePrepStmts=true, cacheResultSetMetadata=true, prepStmtCacheSize=250, useServerPrepStmts=true, useLocalSessionState=true, cacheServerConfiguration=true}
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - driverClassName................."com.mysql.cj.jdbc.Driver"
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - exceptionOverrideClassName......none
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - healthCheckProperties...........{}
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - healthCheckRegistry.............none
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - idleTimeout.....................600000
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - initializationFailTimeout.......1
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - isolateInternalQueries..........false
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - jdbcUrl.........................jdbc:mysql://localhost:3306/cruise_liner
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - keepaliveTime...................0
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - leakDetectionThreshold..........0
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - maxLifetime.....................1800000
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - maximumPoolSize.................10
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - metricRegistry..................none
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - metricsTrackerFactory...........none
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - minimumIdle.....................10
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - password........................<masked>
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - poolName........................"HikariPool-1"
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - readOnly........................false
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - registerMbeans..................false
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - scheduledExecutor...............none
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - schema..........................none
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - threadFactory...................internal
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - transactionIsolation............default
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - username........................"root"
+2022-07-04 13:53:47 DEBUG HikariConfig:393 - validationTimeout...............5000
+2022-07-04 13:53:47 INFO  HikariDataSource:386 - HikariPool-1 - Starting...
+2022-07-04 13:53:47 INFO  HikariPool:393 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@10f7f7de
+2022-07-04 13:53:47 INFO  HikariDataSource:386 - HikariPool-1 - Start completed.
+2022-07-04 13:53:47 DEBUG HikariPool:403 - HikariPool-1 - Pool stats (total=1, active=1, idle=0, waiting=0)
+2022-07-04 13:53:47 DEBUG HikariPool:393 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7fc79eec
+2022-07-04 13:53:47 DEBUG HikariPool:393 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1fe861a3
+2022-07-04 13:53:47 DEBUG HikariPool:393 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@46a49881
+2022-07-04 13:53:47 DEBUG HikariPool:393 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1ba69afa
+2022-07-04 13:53:47 DEBUG HikariPool:393 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5ce9e344
+2022-07-04 13:53:47 DEBUG HikariPool:393 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4ce1304b
+2022-07-04 13:53:47 DEBUG HikariPool:393 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@67966bee
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - Driver class com.mysql.cj.jdbc.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@6f94fa3e
+2022-07-04 14:01:03 DEBUG HikariConfig:386 - HikariPool-1 - configuration:
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - allowPoolSuspension.............false
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - autoCommit......................true
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - catalog.........................none
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - connectionInitSql...............none
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - connectionTestQuery.............none
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - connectionTimeout...............30000
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - dataSource......................none
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - dataSourceClassName.............none
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - dataSourceJNDI..................none
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - dataSourceProperties............{maintainTimeStats=false, password=<masked>, prepStmtCacheSqlLimit=2048, rewriteBatchedStatements=true, elideSetAutoCommits=true, cachePrepStmts=true, cacheResultSetMetadata=true, prepStmtCacheSize=250, useServerPrepStmts=true, useLocalSessionState=true, cacheServerConfiguration=true}
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - driverClassName................."com.mysql.cj.jdbc.Driver"
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - exceptionOverrideClassName......none
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - healthCheckProperties...........{}
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - healthCheckRegistry.............none
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - idleTimeout.....................600000
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - initializationFailTimeout.......1
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - isolateInternalQueries..........false
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - jdbcUrl.........................jdbc:mysql://localhost:3306/cruise_liner
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - keepaliveTime...................0
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - leakDetectionThreshold..........0
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - maxLifetime.....................1800000
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - maximumPoolSize.................10
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - metricRegistry..................none
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - metricsTrackerFactory...........none
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - minimumIdle.....................10
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - password........................<masked>
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - poolName........................"HikariPool-1"
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - readOnly........................false
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - registerMbeans..................false
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - scheduledExecutor...............none
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - schema..........................none
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - threadFactory...................internal
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - transactionIsolation............default
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - username........................"root"
+2022-07-04 14:01:03 DEBUG HikariConfig:393 - validationTimeout...............5000
+2022-07-04 14:01:03 INFO  HikariDataSource:386 - HikariPool-1 - Starting...
+2022-07-04 14:01:04 INFO  HikariPool:393 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e2055d6
+2022-07-04 14:01:04 INFO  HikariDataSource:386 - HikariPool-1 - Start completed.
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - Driver class com.mysql.cj.jdbc.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@6f94fa3e
+2022-07-04 14:02:03 DEBUG HikariConfig:386 - HikariPool-1 - configuration:
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - allowPoolSuspension.............false
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - autoCommit......................true
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - catalog.........................none
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - connectionInitSql...............none
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - connectionTestQuery.............none
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - connectionTimeout...............30000
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - dataSource......................none
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - dataSourceClassName.............none
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - dataSourceJNDI..................none
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - dataSourceProperties............{maintainTimeStats=false, password=<masked>, prepStmtCacheSqlLimit=2048, rewriteBatchedStatements=true, elideSetAutoCommits=true, cachePrepStmts=true, cacheResultSetMetadata=true, prepStmtCacheSize=250, useServerPrepStmts=true, useLocalSessionState=true, cacheServerConfiguration=true}
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - driverClassName................."com.mysql.cj.jdbc.Driver"
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - exceptionOverrideClassName......none
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - healthCheckProperties...........{}
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - healthCheckRegistry.............none
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - idleTimeout.....................600000
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - initializationFailTimeout.......1
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - isolateInternalQueries..........false
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - jdbcUrl.........................jdbc:mysql://localhost:3306/cruise_liner
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - keepaliveTime...................0
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - leakDetectionThreshold..........0
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - maxLifetime.....................1800000
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - maximumPoolSize.................10
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - metricRegistry..................none
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - metricsTrackerFactory...........none
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - minimumIdle.....................10
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - password........................<masked>
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - poolName........................"HikariPool-1"
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - readOnly........................false
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - registerMbeans..................false
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - scheduledExecutor...............none
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - schema..........................none
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - threadFactory...................internal
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - transactionIsolation............default
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - username........................"root"
+2022-07-04 14:02:03 DEBUG HikariConfig:393 - validationTimeout...............5000
+2022-07-04 14:02:03 INFO  HikariDataSource:386 - HikariPool-1 - Starting...
+2022-07-04 14:02:04 INFO  HikariPool:393 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e2055d6
+2022-07-04 14:02:04 INFO  HikariDataSource:386 - HikariPool-1 - Start completed.
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - Driver class com.mysql.cj.jdbc.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@6f94fa3e
+2022-07-04 14:06:11 DEBUG HikariConfig:386 - HikariPool-1 - configuration:
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - allowPoolSuspension.............false
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - autoCommit......................true
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - catalog.........................none
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - connectionInitSql...............none
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - connectionTestQuery.............none
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - connectionTimeout...............30000
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - dataSource......................none
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - dataSourceClassName.............none
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - dataSourceJNDI..................none
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - dataSourceProperties............{maintainTimeStats=false, password=<masked>, prepStmtCacheSqlLimit=2048, rewriteBatchedStatements=true, elideSetAutoCommits=true, cachePrepStmts=true, cacheResultSetMetadata=true, prepStmtCacheSize=250, useServerPrepStmts=true, useLocalSessionState=true, cacheServerConfiguration=true}
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - driverClassName................."com.mysql.cj.jdbc.Driver"
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - exceptionOverrideClassName......none
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - healthCheckProperties...........{}
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - healthCheckRegistry.............none
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - idleTimeout.....................600000
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - initializationFailTimeout.......1
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - isolateInternalQueries..........false
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - jdbcUrl.........................jdbc:mysql://localhost:3306/cruise_liner
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - keepaliveTime...................0
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - leakDetectionThreshold..........0
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - maxLifetime.....................1800000
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - maximumPoolSize.................10
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - metricRegistry..................none
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - metricsTrackerFactory...........none
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - minimumIdle.....................10
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - password........................<masked>
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - poolName........................"HikariPool-1"
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - readOnly........................false
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - registerMbeans..................false
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - scheduledExecutor...............none
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - schema..........................none
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - threadFactory...................internal
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - transactionIsolation............default
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - username........................"root"
+2022-07-04 14:06:11 DEBUG HikariConfig:393 - validationTimeout...............5000
+2022-07-04 14:06:11 INFO  HikariDataSource:386 - HikariPool-1 - Starting...
+2022-07-04 14:06:12 INFO  HikariPool:393 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e2055d6
+2022-07-04 14:06:12 INFO  HikariDataSource:386 - HikariPool-1 - Start completed.

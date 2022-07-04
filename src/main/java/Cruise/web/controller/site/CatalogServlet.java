@@ -51,7 +51,7 @@ public class CatalogServlet extends HttpServlet {
         int rows = CruiseDAO.getAllCruises().size();
         int numberOfPages = rows / recordsPerPage;
 
-        if (numberOfPages % recordsPerPage > 0) {
+        if (rows % recordsPerPage > 0) {
             numberOfPages++;
         }
 
